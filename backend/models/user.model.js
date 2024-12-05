@@ -26,32 +26,6 @@ const userSchema  = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    shippingAddress:{
-        country:{
-            type:String,
-            default:null
-        },
-        street1:{
-            type:String,
-            default:null
-        },        
-        street2:{
-            type:String,
-            default:null
-        },
-        city:{
-            type:String,
-            default:null
-        },
-        province:{
-            type:String,
-            default:null
-        },
-        zip:{
-            type:String,
-            default:null
-        }
-    },
     billingAddress:{
         country:{
             type:String,
