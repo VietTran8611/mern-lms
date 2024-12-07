@@ -49,6 +49,7 @@ p{
   padding: 0;
 }
 
+
 *,
 *::before,
 *::after {
@@ -137,10 +138,27 @@ body.active-modal {
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background-color: oklch(from var(--clr--background) calc(l + .12) c h);
-  padding: 14px 28px;
+  padding: 2em 4em;
   border-radius: 3px;
   max-width: 600px;
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-out-btn{
+  padding: .5em 1.2em;
+  margin-bottom: 1em;
+  background-color: rgb(213, 231, 236);
+  font-size: 1.2em;
+  border: none;
+  border: 1px solid var(--clr--primary);
+  cursor: pointer;
+}
+
+.sign-out-btn:hover{
+  border: 1px solid var(--clr--accent);
 }
 
 .edit-modal{
@@ -161,4 +179,46 @@ body.active-modal {
   padding: 1em;
   margin-bottom: 1.5em;
   border-radius: 30px;
+}
+
+/* Footer */
+.footer-container{
+  background-color: oklch(from var(--clr--background) calc(l - .03) c h);
+  padding: 1.5em 3em;
+  margin-bottom: 5em;
+}
+
+.footer-main{
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.footer-head{
+  border-bottom: 1px solid black;
+  margin-bottom: 1.5em;
+}
+
+.footer-main div{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-main div a{
+  all: unset;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.footer-main div a:hover{
+  color: var(--clr--primary)
+}
+
+.help{
+  padding-right: 2em;
+}
+
+.bold-footer{
+  font-weight: bold;
+  margin-bottom: 1em;
 }
