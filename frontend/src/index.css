@@ -5,11 +5,12 @@
 
   --clr--border: rgba(0,0,0,0.3);
 
-  --clr--text: #101111;
-  --clr--background: #fbfbfb;
-  --clr--primary: #709898;
-  --clr--secondary: #a7c8c8;
-  --clr--accent: #8ac0c0;
+  --clr--text: #0b1311;
+  --clr--background: #e2f3f0;
+
+  --clr--primary: #1c7861;
+  --clr--secondary: #61efce;
+  --clr--accent: #00dba8;
 
 
   --fs--h1: 3rem;
@@ -28,11 +29,11 @@
 
 [data-theme="dark"]{
 
-  --clr--text: #e9f3f6;
-  --clr--background: #010304;
-  --clr--primary: #3e98bb;
-  --clr--secondary: #1e4d62;
-  --clr--accent: #29728e;
+  --clr--text: #ecf4f2;
+  --clr--background: #0c1d1a;
+  --clr--primary: #87e3cc;
+  --clr--secondary: #109e7d;
+  --clr--accent: #24ffcc;
 
   --clr--border: rgba(255,255,255,0.3);
 }
@@ -43,6 +44,10 @@ body {
   padding: 0;
 }
 
+p{
+  margin: 0;
+  padding: 0;
+}
 
 *,
 *::before,
@@ -59,11 +64,101 @@ body {
 }
 
 img {
-  image-rendering: -moz-crisp-edges; /* Firefox */
-  image-rendering: -o-crisp-edges; /* Opera */
-  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: -moz-crisp-edges; 
+  image-rendering: -o-crisp-edges; 
+  image-rendering: -webkit-optimize-contrast; 
   image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  -ms-interpolation-mode: nearest-neighbor; 
   display: block;
 
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+/* Nav */
+
+
+header{
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  background-color: oklch(from var(--clr--background) calc(l + .12) c h);
+  border-bottom: 1px var(--clr--border);
+}
+
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-left{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 1em;
+}
+
+
+
+.nav-pro{
+  display: flex;
+}
+/* modal */
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: oklch(from var(--clr--background) calc(l + .12) c h);
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.edit-modal{
+  top: 60%;
+}
+
+.edit-modal form{
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h1{
+  text-align: center;
+
+}
+
+.modal-edit-pro-input{
+  padding: 1em;
+  margin-bottom: 1.5em;
+  border-radius: 30px;
 }

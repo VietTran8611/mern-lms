@@ -1,15 +1,14 @@
 import express from 'express'
 
 
-import { updateCourse, getCourseDetailsByID, getAllCourses, createCourse } from '../controllers/course.controller.js';
+import { updateCourse, getCourseDetailsByID, getAllCourses, createCourse, getAllStudentViewCourses } from '../controllers/course.controller.js';
 const router = express.Router();
 
-
-
 router.get("/:id",getCourseDetailsByID)
-router.get("/",getAllCourses)
+router.get("/",getAllStudentViewCourses)
 router.post("/",createCourse)
 router.put("/:id", updateCourse)
+
 
 
 
