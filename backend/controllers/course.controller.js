@@ -45,25 +45,40 @@ export const updateCourse = async(req,res)=>{
     }
 
     try{
-       const updatecourse= await User.findByIdAndUpdate(id,course,{new:true})
+       const updatecourse= await Course.findByIdAndUpdate(id,course,{new:true})
        res.status(200).json({success:true,data: updatecourse})
     }catch(err){
         res.status(500).json({success: false, message:"Server Error"})
     }
 }
 
-export const getAllStudentViewCourses = async (req, res) => {
+export const updateStudent = async(req,res)=>{
+  const {id}= req.params
+  const stu = req.body
+
+  try{
+     const updatecourse= await Course.updateOne({_id: id},{$push: {students: stu}})
+     res.status(200).json({success:true,data: updatecourse})
+  }catch(err){
+      res.status(500).json({success: false, message:"Server Error 2"})
+  }
+}
+
+export const getAllViewCourses = async (req, res) => {
     const {
       category = [],
       level = [],
       primaryLanguage = [],
+      student ='',
       sortBy = "price-lowtohigh",
     } = req.query;
 
-    console.log(req.query, "req.query");
 
     try {
       let filters = {};
+      if(student.length){
+        filters={"students.studentId":   { $ne: student} }
+      }
       if (category.length) {
         filters.category = { $in: category.split(",") };
       }
@@ -73,7 +88,7 @@ export const getAllStudentViewCourses = async (req, res) => {
       if (primaryLanguage.length) {
         filters.primaryLanguage = { $in: primaryLanguage.split(",") };
       }
-  
+      console.log(filters, "filter");
       let sortParam = {};
       switch (sortBy) {
         case "price-lowtohigh":
@@ -98,6 +113,7 @@ export const getAllStudentViewCourses = async (req, res) => {
           break;
       }
       const coursesList = await Course.find(filters).sort(sortParam);
+      //const coursesList = await Course.find(filters)
   
       res.status(200).json({
         success: true,
@@ -110,4 +126,18 @@ export const getAllStudentViewCourses = async (req, res) => {
         message: e.message,
       });
     }
+  };
+
+
+  export const getAllStudentViewCourses = async (req, res) => {
+    
+    const {id} = req.params
+    console.log(id)
+    try{
+      const coursesList = await Course.find({"students.studentId": id });
+      res.status(200).json({success: true, data: coursesList})
+  }catch(err){
+      console.log("Error in get course:", err.message)
+      res.status(500).json({success: false, message:"Server Error"})
+  }
   };

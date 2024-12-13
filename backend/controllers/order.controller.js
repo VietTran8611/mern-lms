@@ -4,7 +4,29 @@ import mongoose from 'mongoose'
 export const getOrder = async(req,res)=>{
     const {id} = req.params
     try{
-        const products = await Order.find({buyer: id})
+        const products = await Order.find({userId: id, orderStatus:'pending'})
+        res.status(200).json({success: true, data: products})
+    }catch(err){
+        console.log("Error in get product:", err.message)
+        res.status(500).json({success: false, message:"Server Error"})
+    }
+}
+
+export const updateOrder = async(req,res)=>{
+    const {id} = req.params
+    try{
+        const products = await Order.updateMany({userId: id, orderStatus:'pending'}, {$set: {orderStatus: "bought"}})
+        res.status(200).json({success: true, data: products})
+    }catch(err){
+        console.log("Error in get product:", err.message)
+        res.status(500).json({success: false, message:"Server Error"})
+    }
+}
+
+export const getBought = async(req,res)=>{
+    const {id} = req.params
+    try{
+        const products = await Order.find({userId: id, orderStatus:'bought'})
         res.status(200).json({success: true, data: products})
     }catch(err){
         console.log("Error in get product:", err.message)
@@ -15,9 +37,9 @@ export const getOrder = async(req,res)=>{
 
 export const createOrder = async (req,res)=>{
     const product = req.body
-    if(!product.userId || !product.userName || !product.userEmail || !product.orderStatus || !product.orderDate || !product.instructorName || !product.courseImage || !product.courseTitle || !product.courseId || !product.coursePricing){
-        return res.status(400).json({success: false, message:"Please provide all fields"})
-    }
+    // if(!product.userId || !product.userName || !product.userEmail || !product.orderStatus || !product.orderDate || !product.instructorName || !product.courseImage || !product.courseTitle || !product.courseId || !product.coursePricing){
+    //     return res.status(400).json({success: false, message:"Please provide all fields"})
+    // }
 
     const newProduct = new Order(product)
 

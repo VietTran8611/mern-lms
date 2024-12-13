@@ -13,6 +13,7 @@ export const NavModal = (props) => {
     <div onClick={props.toggleModal} className="overlay"></div>
     <div className="modal-content ">
         <h3>{user.email}</h3>
+        <p>{user.name}</p>
         <button className='sign-out-btn' onClick={handleLogout}>Log out</button>
         <button className="close-modal" onClick={props.toggleModal}>
           Cancel

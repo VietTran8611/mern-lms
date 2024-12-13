@@ -18,10 +18,12 @@ import {
   } from "@chakra-ui/react";
   import { FaUserAlt, FaLock } from "react-icons/fa";
 import { useAuthStore } from '../../store/authStore';
+import { useNavigate } from "react-router-dom";
 
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
+
 
 export const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
