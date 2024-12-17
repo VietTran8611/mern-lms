@@ -6,6 +6,7 @@ const API_URL = import.meta.env.MODE === "development" ? "http://localhost:5000/
 export const useCourseStore = create((set)=>({
     courses: [],
     stdCourses:[],
+    currCourse: [],
     isLoading: false,
     isCheckCourse: true,
     error:null,
@@ -73,6 +74,17 @@ export const useCourseStore = create((set)=>({
           }catch(error){
             console.log(error)
           }
+    },fetchCourse: async(pid)=>{
+        set({ isCheckCourse: true, error: null });
+        try {
+            const res = await fetch(`${API_URL}/${pid}`);
+            const data = await res.json();
+            set({ currCourse: data.data });
+            
+        } catch (error) {
+            set({error:error.response.data.message || "error fetching course", isCheckCourse:false})
+            throw error
+        }
     },
     
 }))

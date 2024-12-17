@@ -90,7 +90,7 @@ export const LoginPage = () => {
                   </InputRightElement>
                 </InputGroup>
                 <FormHelperText textAlign="right">
-                  <Link onClick={()=>{console.log(isAuthenticated)}}>forgot password?</Link>
+                  <Link >forgot password?</Link>
                 </FormHelperText>
               </FormControl>
               <Button

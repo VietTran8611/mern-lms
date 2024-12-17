@@ -6,6 +6,7 @@ import adminRoutes from './routes/admin.route.js'
 import path from 'path';
 import orderRoutes from './routes/order.route.js'
 import courseRoutes from './routes/course.route.js'
+import progressRoutes from './routes/progress.route.js'
 
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
@@ -25,6 +26,8 @@ app.use("/api/auth",authRoutes)
 app.use("/api/admin",adminRoutes)
 app.use("/api/order",orderRoutes)
 app.use("/api/course",courseRoutes)
+app.use("/api/progress",progressRoutes)
+
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));

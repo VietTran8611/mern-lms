@@ -7,6 +7,9 @@ const LectureProgressSchema = new mongoose.Schema({
 });
 
 const CourseProgressSchema = new mongoose.Schema({
+  instructorName: String,
+  courseImage: String,
+  courseTitle: String,
   userId: String,
   courseId: String,
   completed: Boolean,

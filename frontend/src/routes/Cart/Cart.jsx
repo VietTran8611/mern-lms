@@ -6,6 +6,7 @@ import { useAuthStore } from '../../store/authStore';
 import { CartCard } from '../../components/Cart/CartCard';
 import toast from 'react-hot-toast';
 import { useCourseStore } from '../../store/courseStore';
+import { useProgressStore } from '../../store/progressStore';
 
 
 
@@ -13,7 +14,7 @@ export const Cart = () => {
     const { orders, isCheckOrders, fetchOrders, checkout } = useOrderStore();
     const { isCheckingAuth, user } = useAuthStore();
     const { course, updateCourse } = useCourseStore();
-
+    const { progresses, createProgress } = useProgressStore();
 
 
     const handleSubmit = async (e) =>{
@@ -24,6 +25,15 @@ export const Cart = () => {
             studentEmail: user.email,
             paidAmount: order.coursePricing
         })})
+
+        orders.map((order)=>{ createProgress({
+          instructorName: order.instructorName,
+          courseImage: order.courseImage,
+          courseTitle: order.courseTitle,
+          userId:user._id,
+          courseId: order.courseId,
+          completed:false
+        })})
         const { success, message } = await checkout(user._id);
         
       }
@@ -32,7 +42,7 @@ export const Cart = () => {
 		fetchOrders(user._id);
 	}, [fetchOrders]);
 
-      if (!isCheckOrders && !isCheckingAuth) return <Spinner />;
+      if (!isCheckOrders && !isCheckingAuth ) return <Spinner />;
 
   return (
     <div>

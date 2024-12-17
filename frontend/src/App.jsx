@@ -13,6 +13,7 @@ import { PCourse } from './routes/PCourse/PCourse'
 import { AddCourse } from './routes/AddCourse/AddCourse'
 import { Cart } from './routes/Cart/Cart'
 import { MyCourse } from './routes/MyCourse/MyCourse'
+import { CourseProgress } from './routes/CourseProgress/CourseProgress'
 
 
 
@@ -68,6 +69,14 @@ function App() {
 					element={
 						<ProtectedRoute>
                 			<MyCourse />
+						 </ProtectedRoute>
+					}
+				/>
+				<Route
+					path='/my-course/:id/:course/:index'
+					element={
+						<ProtectedRoute>
+                			<CourseProgress />
 						 </ProtectedRoute>
 					}
 				/>

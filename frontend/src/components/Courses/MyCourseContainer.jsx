@@ -3,25 +3,23 @@ import { useCourseStore } from '../../store/courseStore';
 import { useAuthStore } from '../../store/authStore';
 import { Spinner } from '../Spinner/Spinner';
 import { StudentCourseCard } from './StudentCourseCard';
+import { useProgressStore } from '../../store/progressStore';
 
 export const MyCourseContainer = () => {
     const {  isCheckCourse, fetStudentCourse, stdCourses} = useCourseStore();
     const {  user, isCheckingAuth } = useAuthStore();
+    const { progresses, fetchProgresses, isCheckProgress } = useProgressStore();
     useEffect(() => {
-        fetStudentCourse(user._id)
-	}, [fetStudentCourse]);
+        fetchProgresses(user._id)
 
-    if (!isCheckCourse && !isCheckingAuth) return <Spinner />;
+	}, [fetchProgresses]);
+
+    if (!isCheckProgress && !isCheckingAuth) return <Spinner />;
   return (
     <div className='container course-container'>
         <h3>My Courses</h3>
         <div className='stdcourse-container'>
-            {stdCourses.map((course)=>{
-                return(
-                    <StudentCourseCard stdCourses={course}/>
-                )
-            })}
-                        {stdCourses.map((course)=>{
+            {progresses.map((course)=>{
                 return(
                     <StudentCourseCard stdCourses={course}/>
                 )

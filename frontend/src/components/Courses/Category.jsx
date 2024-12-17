@@ -32,7 +32,7 @@ export const Category = ({ setCategory, fetchFilteredCOurse, level,lang, user })
       />
       <RadioInput
         handleChange={handleChange}
-        value="Machine Learning"
+        value="machineLearning"
         title="Machine Learning"
         name="test"
       />

@@ -35,9 +35,11 @@ export const Nav = () => {
             <div className='pointer nav-pro'>
                 <a href="/my-course">My Course</a>
             </div>
-            <a className='cart-con' href="/cart">
-                <ShoppingCart />
-            </a>
+            <div className='pointer'>
+                <a className='cart-con' href="/cart">
+                    <ShoppingCart  />
+                </a>
+            </div>
 
             <DarkMode />
             <UserRoundPen className='pointer profile' onClick={toggleModal}/>
