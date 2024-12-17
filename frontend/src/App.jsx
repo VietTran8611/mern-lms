@@ -6,7 +6,7 @@ import {Toaster} from 'react-hot-toast'
 import { useAuthStore } from './store/authStore'
 import { HomePage } from './routes/Home/HomePage'
 import { ChakraProvider } from "@chakra-ui/react";
-import { VerifyEmail } from './routes/Auth/VerifyEmail'
+import { VerifyEmail } from './routes/auth/VerifyEmail'
 import { Pro } from './routes/Pro/Pro'
 import { Spinner } from './components/Spinner/Spinner'
 import { PCourse } from './routes/PCourse/PCourse'
