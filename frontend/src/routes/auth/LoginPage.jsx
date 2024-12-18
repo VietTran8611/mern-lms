@@ -112,6 +112,12 @@ export const LoginPage = () => {
           Sign Up
         </Link>
       </Box>
+      <Box>
+        Go back to{" "}
+        <Link href="/home" color="teal.500" >
+          Homepage
+        </Link>
+      </Box>
     </Flex>
   );
 }

@@ -6,12 +6,23 @@ import Course from '../models/course.model.js'
 export const getProgress = async(req,res)=>{
     const {id} = req.params
     try{
-        const products = await CourseProgress.find({userId: id})
+        const products = await CourseProgress.find({userId: id,completed:false})
         res.status(200).json({success: true, data: products})
     }catch(err){
         console.log("Error in get progress:", err.message)
         res.status(500).json({success: false, message:"Server Error"})
     }
+}
+
+export const getCompleteProgress = async(req,res)=>{
+  const {id} = req.params
+  try{
+      const products = await CourseProgress.find({userId: id,completed: true})
+      res.status(200).json({success: true, data: products})
+  }catch(err){
+      console.log("Error in get progress:", err.message)
+      res.status(500).json({success: false, message:"Server Error"})
+  }
 }
 
 export const getProgressbyId = async(req,res)=>{

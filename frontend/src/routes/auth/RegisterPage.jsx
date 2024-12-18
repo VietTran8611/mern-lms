@@ -151,6 +151,12 @@ export const RegisterPage = () => {
         Log in
       </Link>
     </Box>
+          <Box>
+            Go back to{" "}
+            <Link href="/home" color="teal.500" >
+              Homepage
+            </Link>
+          </Box>
   </Flex>
   )
 }

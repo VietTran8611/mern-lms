@@ -5,7 +5,11 @@ export const Category = ({ setCategory, fetchFilteredCOurse, level,lang, user })
 
     const handleChange = async (e) =>{
         setCategory(e.target.value)
-        await fetchFilteredCOurse(e.target.value,level,user._id)
+        if(user){
+          await fetchFilteredCOurse(e.target.value,level,user._id)
+        }else{
+          await fetchFilteredCOurse(e.target.value,level)
+        }
     }
   return (
     <div>

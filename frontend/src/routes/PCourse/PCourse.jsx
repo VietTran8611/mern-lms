@@ -23,7 +23,6 @@ export const PCourse = () => {
     <div>
         <Nav />
         <AllCourses orders={orders} user={user} courses={courses} fetchFilteredCOurse={fetchFilteredCOurse}/>
-        <button onClick={()=>{console.log(orders)}}>but</button>
         <Footer />
         
     </div>

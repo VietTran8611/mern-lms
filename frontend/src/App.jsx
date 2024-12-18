@@ -5,6 +5,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
 import { useAuthStore } from './store/authStore'
 import { HomePage } from './routes/Home/HomePage'
+import { Home } from './routes/Home/Home'
 import { ChakraProvider } from "@chakra-ui/react";
 import { VerifyEmail } from './routes/auth/VerifyEmail'
 import { Pro } from './routes/Pro/Pro'
@@ -14,6 +15,8 @@ import { AddCourse } from './routes/AddCourse/AddCourse'
 import { Cart } from './routes/Cart/Cart'
 import { MyCourse } from './routes/MyCourse/MyCourse'
 import { CourseProgress } from './routes/CourseProgress/CourseProgress'
+import { PublicCourse } from './routes/PCourse/PublicCourse'
+
 
 
 
@@ -22,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
 	if (!isAuthenticated) {
-		return <Navigate to='/login' replace />;
+		return <Navigate to='/home' replace />;
 	}
 
 	if (!user.isVerified) {
@@ -97,7 +100,7 @@ function App() {
 					}
 				/>
 				<Route
-					path='/public-courses'
+					path='/courses'
 					element={
 						<ProtectedRoute>
                 			<PCourse />
@@ -129,6 +132,22 @@ function App() {
 							<ChakraProvider>
                         		<LoginPage />
                   			</ChakraProvider>
+						</RedirectAuthenticatedUser>
+					}
+				/>
+				<Route
+					path='/home'
+					element={
+						<RedirectAuthenticatedUser>
+                        		<Home />
+						</RedirectAuthenticatedUser>
+					}
+				/>
+				<Route
+					path='/public-courses'
+					element={
+						<RedirectAuthenticatedUser>
+                        		<PublicCourse />
 						</RedirectAuthenticatedUser>
 					}
 				/>

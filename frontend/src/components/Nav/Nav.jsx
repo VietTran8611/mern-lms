@@ -25,10 +25,10 @@ export const Nav = () => {
                 <Atom />
                 <p>Rando LMS</p>
             </div>
-            <a href="/public-courses">Explore Courses</a>
+            <a className='explore' href="/courses">Explore Courses</a>
             <div className='pointer nav-pro'>
                 <Flame />
-                <a href="/pro">Pro</a>
+                <a className='no-bg' href="/pro">Pro</a>
             </div>
         </div>
         <div className='nav-right'>
@@ -37,7 +37,7 @@ export const Nav = () => {
             </div>
             <div className='pointer'>
                 <a className='cart-con' href="/cart">
-                    <ShoppingCart  />
+                    <ShoppingCart className='cart-icon' />
                 </a>
             </div>
 

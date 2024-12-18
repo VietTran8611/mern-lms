@@ -5,6 +5,7 @@ const API_URL = import.meta.env.MODE === "development" ? "http://localhost:5000/
 
 export const useProgressStore = create((set)=>({
     progresses: [],
+    cProgresses: [],
     currProgress:[],
     isLoading: false,
     isCheckProgress: true,
@@ -21,6 +22,18 @@ export const useProgressStore = create((set)=>({
             throw error
         }
     },
+    fetchCompletedProgresses: async(pid)=>{
+      set({ isCheckProgress: true, error: null });
+      try {
+          const res = await fetch(`${API_URL}/complete/${pid}`);
+          const data = await res.json();
+          set({ cProgresses: data.data });
+          
+      } catch (error) {
+          set({error:error.response.data.message || "error fetching progress", isCheckOrders:false})
+          throw error
+      }
+  },
     fetchCurrProgresses: async(pid)=>{
         set({ isCheckProgress: true, error: null });
         try {

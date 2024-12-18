@@ -285,7 +285,7 @@ header{
   cursor: pointer;
 }
 
-.nav-left a{
+.explore{
   text-decoration: none;
   color: var(--text85);
   background-color: var(--secondary30);
@@ -295,7 +295,7 @@ header{
   cursor: pointer;
 }
 
-.nav-left a:hover{
+.explore:hover{
   background-color: var(--secondary50);
 }
 
@@ -309,12 +309,35 @@ header{
 
 .nav-pro{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary30);
+  border-radius: 5px;
+  padding: 0 .5em;
+}
+
+.nav-pro a{
+  text-decoration: none;
+  color: var(--text85);
+  padding: .5em 1em;
+  font-weight: bold;
+}
+
+.nav-pro:hover{
+  background-color: var(--secondary50);
 }
 
 .cart-con{
   padding-top: .3em;
 }
 
+.cart-icon{
+  color: var(--clr--text);
+}
+
+.cart-icon:hover{
+  color: var(--text50);
+}
 .pointer{
   cursor: pointer;
 }
@@ -802,11 +825,21 @@ body.active-modal {
   margin-top: 9em;
 }
 
+.auth-btn{
+  display: flex;
+  cursor: pointer;
+  gap: .2em;
+}
+
+.auth-btn:hover{
+  color: var(--text60);
+}
+
 /* student course */
 .stdcourse-container{
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2em;
+  margin: 2em 0;
   gap: 1.5em;
 }
 

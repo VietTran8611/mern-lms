@@ -6,7 +6,11 @@ export const Level = ({setLevel, fetchFilteredCOurse, category,lang, user}) => {
 
     const handleChange = async (e) =>{
         setLevel(e.target.value)
-        await fetchFilteredCOurse(category,e.target.value,user._id)
+        if(user){
+          await fetchFilteredCOurse(category,e.target.value,user._id)
+        }else{
+          await fetchFilteredCOurse(category,e.target.value)
+        }
     }
 
   return (
