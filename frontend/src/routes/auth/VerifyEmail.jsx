@@ -129,6 +129,7 @@ export const VerifyEmail = () => {
                                 {isLoading ? "Verifying..." : "Verify Email"}
                             </Button>
                             <Text cursor="pointer" onClick={()=>{toast.success(user.verificationToken)}} className='auth-input-btn'>show code</Text>
+                            {/* <Text cursor="pointer" onClick={()=>{console.log(user.isverified)}} className='auth-input-btn'>show code</Text> */}
                     </Stack>
                 </form>
             </Box>
